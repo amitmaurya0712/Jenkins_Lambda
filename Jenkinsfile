@@ -8,6 +8,7 @@ pipeline {
     stage('Build') {
       steps {
         // Build your Node.js function and create a function.zip file
+        sh 'aws configure'
         sh 'npm install'
         // sh 'npm run build'
         sh 'zip -r function.zip index.js'
