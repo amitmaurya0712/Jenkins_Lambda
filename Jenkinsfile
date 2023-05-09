@@ -32,7 +32,7 @@ pipeline {
         
         stage('Undeploy Lambda') {
             when {
-                expression { !params.DEPLOY }
+                expression { !params.UN-DEPLOY }
             }
             steps {
                 sh 'aws lambda delete-function --function-name node-function'
