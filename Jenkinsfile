@@ -25,7 +25,7 @@ pipeline {
                 expression { params.DEPLOY }
             }
             steps {
-                sls deploy 
+               sh 'serverless deploy' 
         }
         }
         // stage('Undeploy Lambda') {
