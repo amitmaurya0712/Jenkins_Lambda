@@ -21,10 +21,10 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-            expression {
-                params.deploy == true
-            }
+            // when {
+            // expression {
+            //     params.deploy == true
+            // }
             }
             steps {
             withAWS(roleArn: 'arn:aws:iam::964715276857:role/aws-lambda') {
