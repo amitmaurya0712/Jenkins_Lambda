@@ -20,19 +20,14 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
-            // when {
-            // expression {
-            //     params.deploy == true
-            // }
-            
-            steps {
-            withAWS(roleArn: 'arn:aws:iam::964715276857:role/aws-lambda') {
-                sh 'aws lambda create-function --function-name node-function --runtime nodejs14.x --role ${ROLE_ARN} --handler handler --zip-file fileb://function.zip'
+        stage('Deploy Lambda') {
+            when {
+                expression { params.DEPLOY }
             }
+            steps {
+                sh 'aws lambda create-function --function-name node-function --zip-file fileb://function.zip --handler handler --runtime nodejs14.x --role arn:aws:iam::964715276857:role/aws-lambda'
             }
         }
-    }
         
         // stage('Undeploy Lambda') {
         //     when {
@@ -42,5 +37,5 @@ pipeline {
         //         sh 'aws lambda delete-function --function-name node-function'
         //     }
         // }
+    }
 }
-
