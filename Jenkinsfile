@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Select to deploy the function')
-        booleanParam(name: 'UN-DEPLOY', defaultValue: true, description: 'Select to un-deploy the function')
+        booleanParam(name: 'UNDEPLOY', defaultValue: true, description: 'Select to un-deploy the function')
     }
 
     stages {
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Undeploy Lambda') {
             when {
-                expression { !params.UN-DEPLOY }
+                expression { !params.UNDEPLOY }
             }
             steps {
                 sh 'aws lambda delete-function --function-name node-function'
