@@ -25,7 +25,7 @@ pipeline {
                 expression { params.DEPLOY }
             }
             steps {
-                sh 'aws lambda create-function --function-name node-function --zip-file fileb://function.zip --handler handler --runtime nodejs14.x'
+                sh 'aws lambda create-function --function-name node-function --zip-file fileb://function.zip --handler handler --runtime nodejs14.x --role arn:aws:iam::964715276857:role/aws-lambda'
             }
         }
         
