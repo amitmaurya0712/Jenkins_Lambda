@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script{
                     sh 'npm install'
-                    sh 'zip -r function.zip'
+                    sh 'zip -r function.zip index.js package.json'
                 }
             }
         }
