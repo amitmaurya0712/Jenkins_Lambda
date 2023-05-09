@@ -6,6 +6,12 @@ pipeline {
     }
 
     stages {
+        stage('Clone the Repo') {
+            steps{
+                git branch: 'main', url: 'https://github.com/amitmaurya0712/Jenkins_Lambda.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 script{
