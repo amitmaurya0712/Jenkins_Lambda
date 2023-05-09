@@ -28,14 +28,14 @@ pipeline {
                sh 'serverless deploy' 
         }
         }
-        // stage('Undeploy Lambda') {
-        //     when {
-        //         expression { params.UNDEPLOY }
-        //     }
-        //     steps {
-        //         sls remove
-        //     }
-        // }
+        stage('Undeploy Lambda') {
+            when {
+                expression { params.UNDEPLOY }
+            }
+            steps {
+                sh 'sls remove'
+            }
+        }
     }
 }
 
