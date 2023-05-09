@@ -25,18 +25,17 @@ pipeline {
                 expression { params.DEPLOY }
             }
             steps {
-                // step([$class: 'LambdaCreateFunctionBuilder', credentialsId: 'aws-credentials', region: 'us-west-2', functionName: 'node-function', runtime: 'python3.9', artifact: 'function.zip', handler: 'handler', role: 'arn:aws:iam::964715276857:role/aws-lambda'])
-                 deployLambda([alias: '', artifactLocation: 'function.zip', awsAccessKeyId: 'AKIA6BHMC5I434G2LJ6P', awsRegion: 'us-west-2', awsSecretKey: '{AQAAABAAAAAwIcemqGdRWlC6PazxEjzqELWRivZSdxNv90m3Z7P7OTEtMk3n1pW68LPasVSgn8hY5dju0kXyCql0lIo1nsnxDg==}', deadLetterQueueArn: '', description: '', environmentConfiguration: [kmsArn: ''], functionName: 'node-function', handler: 'handler', memorySize: '', role: 'arn:aws:iam::964715276857:role/aws-lambda', runtime: 'nodejs14.x', securityGroups: '', subnets: '', timeout: '', updateMode: 'full'])
+                sls deploy 
         }
         }
-        stage('Undeploy Lambda') {
-            when {
-                expression { params.UNDEPLOY }
-            }
-            steps {
-                sh 'aws lambda delete-function --function-name node-function'
-            }
-        }
+        // stage('Undeploy Lambda') {
+        //     when {
+        //         expression { params.UNDEPLOY }
+        //     }
+        //     steps {
+        //         sls remove
+        //     }
+        // }
     }
 }
 
