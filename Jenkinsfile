@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Select to deploy the function')
-        booleanParam(name: 'UN-DEPLOY', defaultValue: true, description: 'Select to un-deploy the function)
+        booleanParam(name: 'UN-DEPLOY', defaultValue: true, description: 'Select to un-deploy the function')
     }
 
     stages {
